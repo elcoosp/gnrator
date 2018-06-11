@@ -1,0 +1,31 @@
+{
+  "name": "gnrator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "commit": "./node_modules/.bin/git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elcoosp/gnrator.git"
+  },
+  "keywords": [],
+  "author": "elcoosp <elcoosp@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elcoosp/gnrator/issues"
+  },
+  "homepage": "https://github.com/elcoosp/gnrator#readme",
+  "devDependencies": {
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "jest": "^23.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
