@@ -1,15 +1,10 @@
-const iteratorHOF = HOF => (iterable, ...itArgs) => {
-  const iterator = iterable[Symbol.iterator]
-    ? iterable[Symbol.iterator](...itArgs)
-    : iterable(...itArgs)
-
+const iteratorHOF = HOF => iterable => {
   return {
-    next: (...nextArgs) => {
-      const { value, done } = iterator.next(...nextArgs)
-      return {
-        value: HOF(value),
-        done
-      }
+    [Symbol.iterator]: function*(...itArgs) {
+      const iterator = iterable[Symbol.iterator]
+        ? iterable[Symbol.iterator]
+        : iterable
+      for (const value of iterator(...itArgs)) yield HOF(value)
     }
   }
 }
