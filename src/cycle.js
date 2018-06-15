@@ -1,10 +1,9 @@
 function* cycle(it, maxCycles = Infinity) {
-  let i = 0,
-    currCycle = 0
+  let currCycle = 0
   while (currCycle < maxCycles) {
-    i === it.length && ((i = 0), currCycle++)
     if (currCycle === maxCycles) break
-    yield it[i++]
+    yield* it
+    currCycle++
   }
 }
 
