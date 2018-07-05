@@ -25,11 +25,22 @@ Generator yielding an iterable (first argument) vaues one by one, infinitely, or
 for (const x of cycle([2, 3])) // 2, 3, 2, 3, 2, 3... to Infinity
 ```
 
-## iteratorHOF
+#### iteratorHOF
 
 Take one function or many with iteratorHOFsPipe and return another function taking the source iterator. When iterated, the returned function will pass the source iterator values to each functions from the first argument and yield the mapped value.
 
-TODO: add example
+```javascript
+function* dummyGen(n) {
+  let i = 0
+  while (i < n) {
+    yield i++
+  }
+}
+
+const double = x => x * 2
+const it = iteratorHOF(double)(dummyGen)[Symbol.iterator](4)
+[...it] // [0, 2, 4, 6]
+```
 
 ## Support
 
